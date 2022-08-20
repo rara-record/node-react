@@ -1,7 +1,10 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect } from 'react';
+import { sendRequest } from './api/shopping';
+import { UserInput } from './components';
 
 const App = () => {
-  return <div>App</div>;
+  return <UserInput />;
 };
 
 export default App;
