@@ -1,5 +1,4 @@
 const express = require('express');
-const path = require('path');
 const app = express();
 const cors = require('cors');
 app.use(cors());
@@ -16,18 +15,26 @@ dotenv.config();
 
 app.post('/shopping', async (req, res) => {
   try {
-    const { startDate, endDate, timeUnit, device, gender, keywordGroups } =
-      req.body;
+    const {
+      startDate,
+      endDate,
+      category,
+      timeUnit,
+      keyword,
+      device,
+      gender,
+      ages,
+    } = req.body;
 
     const request_body = {
       startDate: startDate,
       endDate: endDate,
       timeUnit: timeUnit,
-      category: device,
-      keyword: gender,
-      device: '',
-      gender: '',
-      ages: keywordGroups,
+      category: category,
+      keyword: keyword,
+      device: device,
+      gender: gender,
+      ages: ages,
     };
 
     const url =

@@ -1,7 +1,11 @@
-import { Form, Input, Button, Select } from 'antd';
-import useInput from '../../hooks/useInput';
 import styled from 'styled-components';
+import { Form, Input, Button, Select } from 'antd';
+
+import useInput from '../../hooks/useInput';
 import useSelecter from '../../hooks/useSelecter';
+
+import { useAppDispatch } from '../../store/hook';
+import { shoppingApi } from '../../api/shopping';
 
 const { Option } = Select;
 const timeUnitData = ['month', 'week', 'date'];
@@ -10,6 +14,7 @@ const genderData = ['m', 'f'];
 const deviceData = ['pc', 'mo'];
 
 const UserInput = () => {
+  const dispatch = useAppDispatch();
   const [start, onChangeStart] = useInput('');
   const [end, onChangeEnd] = useInput('');
   const [category, onChangeCategory] = useInput('');
@@ -20,7 +25,18 @@ const UserInput = () => {
   const [device, onChangeDevice] = useSelecter(null);
 
   const handleSubmitForm = () => {
-    console.log(start, end, category, keyword, timeUnit, ages, gender, device);
+    dispatch(
+      shoppingApi({
+        startDate: start,
+        endDate: end,
+        timeUnit: timeUnit,
+        category: category,
+        keyword: keyword,
+        device: device,
+        gender: gender,
+        ages: ages,
+      })
+    );
   };
 
   return (
