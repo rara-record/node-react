@@ -1,40 +1,45 @@
 const express = require('express');
+const path = require('path');
 const app = express();
 const cors = require('cors');
 app.use(cors());
 const dotenv = require('dotenv');
 const axios = require('axios');
+const bodyParser = require('body-parser');
 
 const PORT = 8080;
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 dotenv.config();
 
-app.post('/data', async (req, res) => {
+app.post('/shopping', async (req, res) => {
   try {
     const { startDate, endDate, timeUnit, device, gender, keywordGroups } =
       req.body;
+
     const request_body = {
-      startDate: '2017-08-01',
-      endDate: '2017-09-30',
-      timeUnit: 'month',
-      category: '50000000',
-      keyword: '정장',
+      startDate: startDate,
+      endDate: endDate,
+      timeUnit: timeUnit,
+      category: device,
+      keyword: gender,
       device: '',
       gender: '',
-      ages: ['10', '20'],
+      ages: keywordGroups,
     };
 
     const url =
       'https://openapi.naver.com/v1/datalab/shopping/category/keyword/age';
+
     const headers = {
       'Content-Type': 'application/json',
       'X-Naver-Client-Id': process.env.CLIENT_ID,
       'X-Naver-Client-Secret': process.env.CLIENT_SECRECT,
     };
-    const result = await axios.post(url, request_body, {
+
+    const result = await axios.post(url, JSON.stringify(request_body), {
       headers: headers,
     });
     console.log(result.data);
