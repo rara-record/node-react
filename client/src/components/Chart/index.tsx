@@ -10,6 +10,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { useAppSelector } from '../../store/hook';
+import styled from 'styled-components';
 
 ChartJS.register(
   CategoryScale,
@@ -54,7 +55,13 @@ export const options = {
 const Chart = () => {
   const { data, chartLoadDone } = useAppSelector(state => state.chart);
 
-  return <>{chartLoadDone && <Line options={options} data={data} />}</>;
+  return (
+    <Wrapper>{chartLoadDone && <Line options={options} data={data} />}</Wrapper>
+  );
 };
 
 export default Chart;
+
+const Wrapper = styled.div`
+  padding: 3rem 5rem;
+`;
