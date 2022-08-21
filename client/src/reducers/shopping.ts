@@ -1,8 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { shoppingAge } from '../action/shopping';
 
-export const initialState = {
-  data: [],
+interface IShopping {
+  Loading: boolean;
+}
+
+export const initialState: IShopping = {
   Loading: false,
 };
 
@@ -15,11 +18,10 @@ const shoppingSlice = createSlice({
       .addCase(shoppingAge.pending, state => {
         state.Loading = true;
       })
-      .addCase(shoppingAge.fulfilled, (state, action) => {
+      .addCase(shoppingAge.fulfilled, state => {
         state.Loading = false;
-        state.data = action.payload;
       })
-      .addCase(shoppingAge.rejected, (state, action) => {
+      .addCase(shoppingAge.rejected, state => {
         state.Loading = false;
       }),
 });
