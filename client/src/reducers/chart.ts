@@ -1,5 +1,6 @@
 import { IChart } from './../types/chart';
 import { createSlice } from '@reduxjs/toolkit';
+import { ChartData } from 'chart.js';
 
 function makeColor() {
   return '#' + Math.round(Math.random() * 0xffffff).toString(16);
@@ -28,7 +29,7 @@ const chartSlice = createSlice({
 
       let labels = [];
       let age = [];
-      let chartData: any[] = [];
+      let chartData: ChartData[] = [];
 
       for (let i = 0; i < action.payload.length; i++) {
         chartData.push(action.payload[i].ratio);
