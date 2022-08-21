@@ -56,7 +56,7 @@ const FilterForm = () => {
         </div>
 
         <div>
-          <label htmlFor="user-password">비밀번호</label>
+          <label htmlFor="user-password">종료일자</label>
 
           <Input
             name="user-password"
@@ -146,10 +146,34 @@ const FilterForm = () => {
 
 export default FilterForm;
 
-const UserInputWrapper = styled.div``;
+const UserInputWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
 
-const UserSelecterWrapper = styled.div``;
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  & input {
+    padding: 0.5rem;
+  }
+`;
+
+const UserSelecterWrapper = styled.div`
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  max-width: 500px;
+
+  & input {
+    padding: 0.5rem;
+  }
+`;
 
 const ButtonWrapper = styled.div`
-  margin-top: 10px;
+  margin-top: 2rem;
 `;

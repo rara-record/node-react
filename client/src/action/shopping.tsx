@@ -7,7 +7,9 @@ export const shoppingAge = createAsyncThunk(
   async (data: any, thunkAPI) => {
     try {
       const response = await axios.post('http://localhost:8080/age', data);
-      thunkAPI.dispatch(chartSlice.actions.addchartData(response.data));
+      thunkAPI.dispatch(
+        chartSlice.actions.addchartData(response.data.results[0].data)
+      );
       return response.data;
     } catch (err) {
       const error = err as AxiosError;
