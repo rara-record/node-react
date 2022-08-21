@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -10,7 +9,6 @@ import {
   Legend,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
-import { faker } from '@faker-js/faker';
 import { useAppSelector } from '../../store/hook';
 
 ChartJS.register(
@@ -53,33 +51,10 @@ export const options = {
   },
 };
 
-const labels = ['2020-11-01', '2020-12-01'];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: '10대',
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      yAxisID: 'y',
-    },
-    {
-      label: '20대',
-      data: labels.map(() => faker.datatype.number({ min: -1000, max: 1000 })),
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-      yAxisID: 'y1',
-    },
-  ],
-};
-
 const Chart = () => {
-  const { data: chartData, Loading } = useAppSelector(state => state.shopping);
-  console.log(chartData, Loading);
+  const { data, chartLoadDone } = useAppSelector(state => state.chart);
 
-  return <Line options={options} data={data} />;
+  return <>{chartLoadDone && <Line options={options} data={data} />}</>;
 };
 
 export default Chart;
