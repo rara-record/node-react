@@ -40,7 +40,7 @@ const chartSlice = createSlice({
         labels: Array.from(new Set(labels)),
         datasets: [
           {
-            label: Number(age),
+            label: age,
             data: chartData,
             backgroundColor: makeColor(),
           },
