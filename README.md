@@ -15,7 +15,7 @@
   - chart 컴포넌트에서 useSelector를 사용해, state를 가져와서 line chart의 props으로 넣어줍니다.
 
 ### CORS 이슈 해결방법
-- client에서, npm i http-proxy-middleware를 설치하여, setupProxy파일을 만들고, /v1으로 시작하는 모든 서버 URL을 target에 명시된 URL로 호출되도록 만들었습니다.
+- client에서, npm i http-proxy-middleware를 설치하여, setupProxy파일을 만들고, /v1으로 시작하는 모든 서버 URL을 target에 명시된 URL로 호출되도록 만들었습니다. 
 - server에서, npm i cors를 설치하여, 모든 도메인에서 제한 없이 해당 서버에 요청을 보내고 응답을 받을 수 있도록 만들었습니다.
 
 - ### 선택 구현 사항 체크 <br />
