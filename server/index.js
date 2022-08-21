@@ -32,8 +32,8 @@ app.post('/age', async (req, res) => {
       timeUnit: timeUnit,
       category: category,
       keyword: keyword,
-      device: device,
-      gender: gender,
+      device: device === 'all' ? '' : device,
+      gender: gender === 'all' ? '' : gender,
       ages: ages,
     };
 
@@ -49,11 +49,9 @@ app.post('/age', async (req, res) => {
     const result = await axios.post(url, JSON.stringify(request_body), {
       headers: headers,
     });
-    console.log(result.data);
 
     return res.json(result.data);
   } catch (error) {
-    console.log(error);
     return res.json(error);
   }
 });
