@@ -76,9 +76,7 @@ export const data = {
 };
 
 const Chart = () => {
-  const { data: chartData, Loading } = useAppSelector(
-    state => state.reducer.shopping
-  );
+  const { data: chartData, Loading } = useAppSelector(state => state.shopping);
   console.log(chartData, Loading);
 
   return <Line options={options} data={data} />;

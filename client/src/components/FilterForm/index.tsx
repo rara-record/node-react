@@ -5,15 +5,15 @@ import useInput from '../../hooks/useInput';
 import useSelecter from '../../hooks/useSelecter';
 
 import { useAppDispatch } from '../../store/hook';
-import { shoppingApi } from '../../api/shopping';
+import { shoppingAge } from '../../action/shopping';
 
 const { Option } = Select;
 const timeUnitData = ['month', 'week', 'date'];
 const agesData = ['10', '20', '30', '40', '50', '60'];
-const genderData = ['m', 'f'];
-const deviceData = ['pc', 'mo'];
+const genderData = ['all', 'm', 'f'];
+const deviceData = ['all', 'pc', 'mo'];
 
-const UserInput = () => {
+const FilterForm = () => {
   const dispatch = useAppDispatch();
   const [start, onChangeStart] = useInput('');
   const [end, onChangeEnd] = useInput('');
@@ -26,7 +26,7 @@ const UserInput = () => {
 
   const handleSubmitForm = () => {
     dispatch(
-      shoppingApi({
+      shoppingAge({
         startDate: start,
         endDate: end,
         timeUnit: timeUnit,
@@ -72,6 +72,7 @@ const UserInput = () => {
           <Input
             name="category"
             type="text"
+            placeholder="50000000"
             value={category}
             onChange={onChangeCategory}
             required
@@ -83,6 +84,7 @@ const UserInput = () => {
           <Input
             name="keyword"
             type="text"
+            placeholder="정장"
             value={keyword}
             onChange={onChangeKeyword}
             required
@@ -142,7 +144,7 @@ const UserInput = () => {
   );
 };
 
-export default UserInput;
+export default FilterForm;
 
 const UserInputWrapper = styled.div``;
 

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { shoppingApi } from '../../api/shopping';
+import { shoppingAge } from '../action/shopping';
 
 export const initialState = {
   data: [],
@@ -9,21 +9,17 @@ export const initialState = {
 const shoppingSlice = createSlice({
   name: 'shopping',
   initialState,
-  reducers: {
-    addPostToMe(state, action) {
-      state.data = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers: builder =>
     builder
-      .addCase(shoppingApi.pending, state => {
+      .addCase(shoppingAge.pending, state => {
         state.Loading = true;
       })
-      .addCase(shoppingApi.fulfilled, (state, action) => {
+      .addCase(shoppingAge.fulfilled, (state, action) => {
         state.Loading = false;
         state.data = action.payload;
       })
-      .addCase(shoppingApi.rejected, (state, action) => {
+      .addCase(shoppingAge.rejected, (state, action) => {
         state.Loading = false;
       }),
 });

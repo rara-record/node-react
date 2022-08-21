@@ -1,13 +1,13 @@
 import axios, { AxiosError } from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import shoppingSlice from '../store/reducers/shopping';
+import chartSlice from '../reducers/chart';
 
-export const shoppingApi = createAsyncThunk(
-  'shopping',
+export const shoppingAge = createAsyncThunk(
+  'shopping/age',
   async (data: any, thunkAPI) => {
     try {
-      const response = await axios.post('http://localhost:8080/shopping', data);
-      thunkAPI.dispatch(shoppingSlice.actions.addPostToMe(response.data));
+      const response = await axios.post('http://localhost:8080/age', data);
+      thunkAPI.dispatch(chartSlice.actions.addchartData(response.data));
       return response.data;
     } catch (err) {
       const error = err as AxiosError;

@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 dotenv.config();
 
-app.post('/shopping', async (req, res) => {
+app.post('/age', async (req, res) => {
   try {
     const {
       startDate,

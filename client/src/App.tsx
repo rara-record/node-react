@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Chart, UserInput } from './components';
+import { Chart, FilterForm } from './components';
 
 const App = () => {
   return (
     <>
-      <UserInput />
+      <FilterForm />
       <Chart />
     </>
   );
