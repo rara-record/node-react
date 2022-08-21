@@ -1,14 +1,16 @@
-import React from 'react';
+import styled from 'styled-components';
 
-import { Chart, FilterForm } from './components';
+import { Chart, Header } from './components';
 
 const App = () => {
   return (
-    <>
-      <FilterForm />
+    <Wrapper>
+      <Header />
       <Chart />
-    </>
+    </Wrapper>
   );
 };
 
 export default App;
+
+const Wrapper = styled.div``;
