@@ -5,7 +5,8 @@
 - ### 지원자 이름 
   - 김보라
 - ### 빌드 방법 명시
-  - npm run build
+  - server : npm run dev
+  - client : npm start
 - ### 프로젝트 설명
   - 우선 express.js로 웹서버를 만들어놓고, 클라이언트에서 Form이 submit되면 데이터는 dispatch에 담아
   -  비동기 처리를 위해 생성해놓은 createAsyncThunk안의 shoppingAge함수를 호출합니다.
