@@ -1,9 +1,5 @@
 
 
-## 아이겐코리아 온라인 테스트 지원자 김보라
-
-- ### 지원자 이름 
-  - 김보라
 - ### 빌드 방법 명시
   - server : npm run dev
   - client : npm start
